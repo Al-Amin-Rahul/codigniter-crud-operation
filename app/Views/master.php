@@ -38,7 +38,7 @@
             <a class="nav-link" href="add-item">Add</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">View</a>
+            <a class="nav-link" href="show-item">View</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
