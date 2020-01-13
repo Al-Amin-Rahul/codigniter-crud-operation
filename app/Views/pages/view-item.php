@@ -5,7 +5,7 @@
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Manage Category</li>
+            <li class="breadcrumb-item active">Manage Item</li>
         </ol>
 
         <!-- Icon Cards-->
@@ -21,33 +21,36 @@
                         <thead>
                         <tr>
                             <th>Serial NO</th>
-                            <th>Name</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Product Price</th>
                             <th>Description</th>
-                            <th>Parent Id</th>
-                            <th>Publication Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>Serial NO</th>
-                            <th>name</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Product Price</th>
                             <th>Description</th>
-                            <th>Parent Id</th>
-                            <th>publication_status</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
+                        
+                        <?php foreach ($results as $result) { ?>
+                            
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= $result->id;?></td>
+                                <td><?= $result->product_name;?></td>
+                                <td><?= $result->product_code;?></td>
+                                <td><?= $result->product_price;?></td>
+                                <td><?= $result->description;?></td>
                                 <td>
 
-                                    <a href="" class="btn btn-info btn-sm">
+                                    <a href="edit-item/<?= $result->id; ?>" class="btn btn-info btn-sm">
                                         <span class="fa fa-edit"></span>
                                     </a>
                                     <a href="" class="btn btn-danger btn-xs">
@@ -56,6 +59,7 @@
 
                                 </td>
                             </tr>
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>

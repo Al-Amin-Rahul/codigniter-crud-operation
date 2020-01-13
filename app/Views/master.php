@@ -11,7 +11,8 @@
   <title>Small Business - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/small-business.css" rel="stylesheet">
@@ -35,10 +36,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="add-item">Add</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>/add-item">Add</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="show-item">View</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>/show-item">View</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -60,8 +61,11 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -75,7 +75,9 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/add-item', 'ExampleController::addItem');
 $routes->post('/create-item', 'ExampleController::createItem');
-$routes->post('/show-item', 'ExampleController::showItem');
+$routes->get('/show-item', 'ExampleController::showItem');
+$routes->post('/update-item', 'ExampleController::updateItem');
+$routes->get('/edit-item/(:num)', 'ExampleController::editItem/$1');
 
 /**
  * --------------------------------------------------------------------
