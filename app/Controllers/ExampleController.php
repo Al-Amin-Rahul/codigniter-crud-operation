@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 use App\Models\Item;
 use Config\Database;
+use Config\Services;
 use App\Controllers\BaseController;
 
 class ExampleController extends BaseController
@@ -36,15 +37,22 @@ class ExampleController extends BaseController
 		}
 		else
 		{
-			$model->save([
-				'product_name'   => $this->request->getVar('product_name'),
-				'product_code'   => $this->request->getVar('product_code'),
-				'product_price'  => $this->request->getVar('product_price'),
-				'description'    => $this->request->getVar('description'),
+			$data	=	array([
+				'product_name'   => $this->request->getPost('product_name'),
+				'product_code'   => $this->request->getPost('product_code'),
+				'product_price'  => $this->request->getPost('product_price'),
+				'description'    => $this->request->getPost('description'),
 			]);
-			$data['results'] = $model->fetchAllItem();
-			$data['body'] = view('pages/view-item.php',$data);
-			return view('master', $data);
+
+			// $data['product_name']	=	$this->request->getPost('product_name');
+			// $data['product_code']	=	$this->request->getPost('product_code');
+			// $data['product_price']	=	$this->request->getPost('product_price');
+			// $data['description']	=	$this->request->getPost('description');
+
+			$model->addItem($data);
+
+			Services::session()->setFlashdata('Message', 'Success');
+			return redirect()->to('show-item');
 
 		}
 	}
@@ -106,6 +114,14 @@ class ExampleController extends BaseController
 
 		}
 
+	}
+
+	public function deleteItem($id){
+		$model = new Item();
+		$model->deleteItem($id);
+		$data['results'] = $model->fetchAllItem();
+		$data['body'] = view('pages/view-item.php',$data);
+		return view('master', $data);
 	}
 
 }

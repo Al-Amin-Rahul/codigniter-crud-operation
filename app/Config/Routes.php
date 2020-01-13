@@ -78,6 +78,7 @@ $routes->post('/create-item', 'ExampleController::createItem');
 $routes->get('/show-item', 'ExampleController::showItem');
 $routes->post('/update-item', 'ExampleController::updateItem');
 $routes->get('/edit-item/(:num)', 'ExampleController::editItem/$1');
+$routes->get('/delete-item/(:num)', 'ExampleController::deleteItem/$1');
 
 /**
  * --------------------------------------------------------------------

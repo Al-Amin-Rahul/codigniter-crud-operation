@@ -1,3 +1,4 @@
+<?php use Config\Services; ?>
 <div class="container-fluid">
 
         <!-- Breadcrumbs-->
@@ -7,8 +8,13 @@
             </li>
             <li class="breadcrumb-item active">Manage Item</li>
         </ol>
-
-        <!-- Icon Cards-->
+        <?php if(Services::session()->has('Message')){ ?>
+        <div class="alert alert-success" role="alert">
+            
+            <?php echo Services::session()->get('Message'); ?>
+            
+        </div>
+        <?php }?>
 
         <div class="card mb-3">
             <div class="card-header">
@@ -53,7 +59,7 @@
                                     <a href="edit-item/<?= $result->id; ?>" class="btn btn-info btn-sm">
                                         <span class="fa fa-edit"></span>
                                     </a>
-                                    <a href="" class="btn btn-danger btn-xs">
+                                    <a href="delete-item/<?= $result->id; ?>" class="btn btn-danger btn-xs">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
