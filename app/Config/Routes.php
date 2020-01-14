@@ -77,6 +77,8 @@ $routes->get('/add-item', 'ExampleController::addItem');
 $routes->post('/create-item', 'ExampleController::createItem');
 $routes->get('/show-item', 'ExampleController::showItem');
 $routes->post('/update-item', 'ExampleController::updateItem');
+$routes->match(['get', 'post'], '/add-file', 'ExampleController::addFile');
+// $routes->get('/add-file', 'ExampleController::addFile');
 $routes->get('/edit-item/(:num)', 'ExampleController::editItem/$1');
 $routes->get('/delete-item/(:num)', 'ExampleController::deleteItem/$1');
 

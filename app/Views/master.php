@@ -42,7 +42,7 @@
             <a class="nav-link" href="<?php echo base_url(); ?>/show-item">View</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>/add-file">File Upload</a>
           </li>
         </ul>
       </div>

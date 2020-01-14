@@ -1,4 +1,5 @@
 <?php namespace App\Controllers;
+use App\Models\File;
 use App\Models\Item;
 use Config\Database;
 use Config\Services;
@@ -44,10 +45,6 @@ class ExampleController extends BaseController
 				'description'    => $this->request->getPost('description'),
 			]);
 
-			// $data['product_name']	=	$this->request->getPost('product_name');
-			// $data['product_code']	=	$this->request->getPost('product_code');
-			// $data['product_price']	=	$this->request->getPost('product_price');
-			// $data['description']	=	$this->request->getPost('description');
 			$model->addItem($data[0]);
 
 			Services::session()->setFlashdata('Message', 'Success');
@@ -121,6 +118,53 @@ class ExampleController extends BaseController
 		$data['results'] = $model->fetchAllItem();
 		$data['body'] = view('pages/view-item.php',$data);
 		return view('master', $data);
+	}
+
+	public function addFile(){
+
+		if($this->request->getMethod() !== 'post'){
+			$data['body'] = view('pages/add-file.php');
+			return view('master', $data);
+		}else{
+			if (! $this->validate([
+				'file_name'   => 'required',
+				//'file'   	  => 'required',
+			],
+			[   // Errors
+				'file_name' => [
+					'required' => 'must have names',
+				],
+				'file' => [
+					'required' => 'file required'
+				]
+			]
+			
+			))
+			{
+				$data['body'] = view('pages/add-file.php');
+				return view('master', $data);
+				
+			}else{
+				$file	    = $this->request->getFile('file');
+
+				$fileName	= $file->getClientName();
+				$file_path	=  'uploads/'.$fileName;
+				$file->move('uploads/',$fileName);
+
+				$data	=	array([
+					'file_name'	=>	$this->request->getPost('file_name'),
+					'file_path'	=>  $file_path,
+				]);
+
+				$model	=	new File();
+				$model->uploadFile($data[0]);
+				Services::session()->setFlashdata('Message', 'Success');
+				return redirect()->to(base_url());
+
+				
+			}
+		}
+
 	}
 
 }
