@@ -10,7 +10,12 @@ class Item extends Model
     protected $allowedFields = ['product_name', 'product_code', 'product_price', 'description'];
 
     public function addItem($data){
-		$sql	=	"INSERT INTO `items` (`product_name`, `product_code`, `product_price`, `description`) VALUES ($product_name, $product_code, $product_price, $description)";
+		$product_name	=	$data['product_name'];
+		$product_code	=	$data['product_code'];
+		$product_price	=	$data['product_price'];
+		$description	=	$data['description'];
+		
+		$sql	=	"INSERT INTO `items` (`product_name`, `product_code`, `product_price`, `description`) VALUES ('$product_name', '$product_code', $product_price, '$description')";
 		$query	=	Database::connect()->query($sql);
 		$data	= $query->getResult();
 		return;

@@ -48,8 +48,7 @@ class ExampleController extends BaseController
 			// $data['product_code']	=	$this->request->getPost('product_code');
 			// $data['product_price']	=	$this->request->getPost('product_price');
 			// $data['description']	=	$this->request->getPost('description');
-
-			$model->addItem($data);
+			$model->addItem($data[0]);
 
 			Services::session()->setFlashdata('Message', 'Success');
 			return redirect()->to('show-item');
