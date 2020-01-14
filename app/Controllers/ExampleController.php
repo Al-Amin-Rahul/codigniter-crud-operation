@@ -3,6 +3,7 @@ use App\Models\File;
 use App\Models\Item;
 use Config\Database;
 use Config\Services;
+use CodeIgniter\I18n\Time;
 use App\Controllers\BaseController;
 
 class ExampleController extends BaseController
@@ -145,9 +146,13 @@ class ExampleController extends BaseController
 				return view('master', $data);
 				
 			}else{
-				$file	    = $this->request->getFile('file');
 
-				$fileName	= $file->getClientName();
+				$myTime = Time::now('Asia/Dhaka', 'en_US');
+
+				$file	    = $this->request->getFile('file');
+				$ext	= $file->getClientExtension();
+
+				$fileName	= \date('Ymd').'.'.$ext;
 				$file_path	=  'uploads/'.$fileName;
 				$file->move('uploads/',$fileName);
 
@@ -158,13 +163,21 @@ class ExampleController extends BaseController
 
 				$model	=	new File();
 				$model->uploadFile($data[0]);
+				
 				Services::session()->setFlashdata('Message', 'Success');
-				return redirect()->to(base_url());
+				return redirect()->to('view-file');
 
 				
 			}
 		}
 
+	}
+
+	public function viewFile(){
+		$model	=	new File();
+		$data['results']	=	$model->getAllFile();
+		$data['body'] 		= view('pages/view-file.php',$data);
+		return view('master', $data);
 	}
 
 }

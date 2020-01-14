@@ -36,13 +36,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>/add-item">Add</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>/add-item">Add Item</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>/show-item">View</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>/show-item">View Item</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>/add-file">File Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>/view-file">View File</a>
           </li>
         </ul>
       </div>

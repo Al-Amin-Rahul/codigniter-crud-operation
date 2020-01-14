@@ -17,5 +17,12 @@ class File extends Model
 		$query	=	Database::connect()->query($sql);
         return;
     }
+
+    public function getAllFile(){
+        $sql    =   "SELECT * FROM `files`";
+        $query	=	Database::connect()->query($sql);
+        $data	= $query->getResult();
+        return $data;
+    }
     
 }
